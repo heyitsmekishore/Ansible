@@ -1,12 +1,21 @@
 execution:
 - concurrency: 10
-  hold-for: 2m30s
-  ramp-up: 1m
-  scenario: Thread Group
-
+  hold-for: 5m
+  ramp-up: 2m
+  scenario: yaml_example
+  
 scenarios:
-  Thread Group:
+  yaml_example:
+    retrieve-resources: false
     requests:
-    - label: blazedemo
-      method: GET
-      url: http://blazedemo.com/
+      - http://google.com/
+
+reporting:
+- module: final-stats
+- module: console
+
+settings:
+  check-interval: 5s
+  default-executor: jmeter
+
+provisioning: local
